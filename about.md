@@ -15,6 +15,8 @@ This [circular slider](https://marusa15.github.io/CircularSlider/) was a take-ho
 
 As of June 2026, I am building this very website in Jekyll and will proceed with learning about APIs.
 
+
+<img src="https://ghchart.rshah.org/mbarle" alt="GitHub contribution chart" />
+
+
 Stay tuned. :)
-
-
