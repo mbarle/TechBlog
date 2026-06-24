@@ -2,7 +2,9 @@
 layout: post
 title:  "Lessons learned in 2016"
 date:   2017-01-28
-categories: yearly reviews
+category: 
+- "yearly reviews"
+- "new"
 featured-img: /assets/sparkler.jpg
 introduction: "It’s been past the end of January 2017, so the official bucketlist post is beyond its expiry date, but who cares 😎"
 ---

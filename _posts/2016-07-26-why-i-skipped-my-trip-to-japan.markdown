@@ -2,7 +2,9 @@
 layout: post
 title:  "Why I skipped my Trip to Japan for an even Greater Adventure"
 date:   2016-07-26
-categories: career
+category: 
+- "career"
+- "new"
 featured-img: /assets/japan.jpg
 introduction: "If you’ve been following me on Facebook, you might recall I enthusiastically announced my upcoming trip to Japan. So what now? Where are sushi and temple photos? What happened to Harajuku street fashion shots and embarassing Karaoke clips?
 

@@ -2,7 +2,9 @@
 layout: post
 title:  "3 ways web development has changed my life for the better 8-)"
 date:   2015-12-08
-categories: meta learning
+category: 
+
+- "new"
 featured-img: /assets/sky.jpg
 introduction: "I have a confession to make. I’m such a nerd. 😎
 
