@@ -28,6 +28,13 @@ markdown: kramdown
 plugins:
   - jekyll-feed
 
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-WFC5R4MGVT"
+    anonymize_ip: false # default  
+
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
