@@ -28,11 +28,7 @@ markdown: kramdown
 plugins:
   - jekyll-feed
 
-analytics:
-  provider: "google-gtag"
-  google:
-    tracking_id: "G-WFC5R4MGVT"
-    anonymize_ip: false # default  
+google_analytics: "G-WFC5R4MGVT"
 
 
 # Exclude from processing.
