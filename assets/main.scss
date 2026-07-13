@@ -2,4 +2,37 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 
+
 @import "minima";
+
+.site-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.sidebar {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+}
+
+.sidebar nav {
+  display: grid;
+  gap: .5rem;
+}
+
+
+@media (max-width: 800px) {
+  .site-shell {
+    display: block;
+  }
+
+  .sidebar {
+    position: static;
+    margin-bottom: 2rem;
+  }
+}
