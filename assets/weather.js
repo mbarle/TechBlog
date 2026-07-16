@@ -15,7 +15,7 @@ async function loadWeather() {
     const data = await response.json();
 
     document.getElementById("weather_code").textContent =
-      `${weatherDescriptions[data.current.weather_code]} `;
+      `${weatherIcons[data.current.weather_code]} `;
 
     document.getElementById("temperature").textContent =
       `${data.current.temperature_2m} °C`;
@@ -25,8 +25,12 @@ async function loadWeather() {
     console.log(data);
     console.log(weatherDescriptions[data.current.weather_code]);
   } catch (error) {
-    console.error(error);
+    document.getElementById("temperature").textContent =
+      "Podatek ni na voljo";
+    document.getElementById("weather_code").textContent =
+      "Podatek ni na voljo";
   }
+  
 }
 
 loadWeather();
