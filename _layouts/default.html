@@ -2,7 +2,9 @@
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
   {% include head.html %}
-  <script src="{{ '/assets/weather.js' | relative_url }}"></script>
+  
+
+
 
   <body>
 
@@ -20,6 +22,8 @@
     </div>
 
     {% include footer.html %}
+<script src="{{ '/assets/js/weather.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/geolocation.js' | relative_url }}"></script>
 
   </body>
 

@@ -18,7 +18,7 @@ layout: default
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
         </h2>
 
-        <p><img src="{{ post.featured-img }}"></p>
+        <p><img src="{{ post.featured-img }}" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover;"></p>
 
         <p> {{ post.introduction }} </p>
 
