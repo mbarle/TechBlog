@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Primerjava vremena na destinaciji</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .weather-form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    }
+
+    .weather-form h1 {
+      margin-top: 0;
+      font-size: 1.7rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #2869a6;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1f527f;
+    }
+
+    #selection-summary {
+      margin-top: 24px;
+      padding: 15px;
+      background-color: #eef4f8;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="weather-form">
+    <h1>Preveri preteklo vreme</h1>
+
+    <form id="destination-form">
+
+      <div class="form-group">
+        <label for="destination">Destinacija</label>
+
+        <input
+          type="text"
+          id="destination"
+          name="destination"
+          placeholder="Na primer: Himarë, Albanija"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="selected-date">Izberi datum</label>
+
+        <input
+          type="date"
+          id="selected-date"
+          name="selectedDate"
+          required
+        >
+      </div>
+
+      <button type="submit">Preveri vreme</button>
+    </form>
+
+    <section id="selection-summary" hidden>
+      <h2>Izbrani podatki</h2>
+
+      <p>
+        <strong>Destinacija:</strong>
+        <span id="selected-destination"></span>
+      </p>
+
+      <p>
+        <strong>Datum:</strong>
+        <span id="displayed-date"></span>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("destination-form");
+    const destinationInput = document.getElementById("destination");
+    const dateInput = document.getElementById("selected-date");
+
+    const summary = document.getElementById("selection-summary");
+    const selectedDestination =
+      document.getElementById("selected-destination");
+    const displayedDate =
+      document.getElementById("displayed-date");
+
+    // Današnji datum.
+    const today = new Date();
+
+    // Datum pred petimi leti.
+    const fiveYearsAgo = new Date();
+    fiveYearsAgo.setFullYear(today.getFullYear() - 5);
+
+    /*
+      HTML-polje type="date" zahteva obliko YYYY-MM-DD.
+      Funkcija pripravi lokalni datum brez težav zaradi časovnih pasov.
+    */
+    function formatDateForInput(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+
+      return `${year}-${month}-${day}`;
+    }
+
+    // Uporabnik ne more izbrati starejšega ali prihodnjega datuma.
+    dateInput.min = formatDateForInput(fiveYearsAgo);
+    dateInput.max = formatDateForInput(today);
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const destination = destinationInput.value.trim();
+      const selectedDate = dateInput.value;
+
+      if (!destination || !selectedDate) {
+        return;
+      }
+
+      selectedDestination.textContent = destination;
+      displayedDate.textContent = selectedDate;
+      summary.hidden = false;
+    });
+  </script>
+
+</body>
+</html>
