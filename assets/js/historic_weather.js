@@ -8,12 +8,12 @@ const form = document.getElementById("destination-form");
     const displayedDate =
       document.getElementById("displayed-date");
 
-    // Današnji datum.
+    // Today's date
     const today = new Date();
 
-    // Datum pred petimi leti.
-    const fiveYearsAgo = new Date();
-    fiveYearsAgo.setFullYear(today.getFullYear() - 5);
+    // A date from 20 years ago
+    const twentyYearsAgo = new Date();
+    twentyYearsAgo.setFullYear(today.getFullYear() - 20);
 
     /*
       HTML-polje type="date" zahteva obliko YYYY-MM-DD.
@@ -28,7 +28,7 @@ const form = document.getElementById("destination-form");
     }
 
     // Uporabnik ne more izbrati starejšega ali prihodnjega datuma.
-    dateInput.min = formatDateForInput(fiveYearsAgo);
+    dateInput.min = formatDateForInput(twentyYearsAgo);
     dateInput.max = formatDateForInput(today);
 
     form.addEventListener("submit", function (event) {
