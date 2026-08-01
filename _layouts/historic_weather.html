@@ -16,12 +16,12 @@ layout: default
 <body>
 
   <main class="weather-form">
-    <h1>Preveri preteklo vreme</h1>
+    <h1>Check historic weather data</h1>
 
     <form id="destination-form">
 
       <div class="form-group">
-        <label for="destination">Destinacija</label>
+        <label for="destination">Destination</label>
 
         <input
           type="text"
@@ -33,7 +33,7 @@ layout: default
       </div>
 
       <div class="form-group">
-        <label for="selected-date">Izberi datum</label>
+        <label for="selected-date">Select a date</label>
 
         <input
           type="date"
@@ -43,19 +43,19 @@ layout: default
         >
       </div>
 
-      <button type="submit">Preveri vreme</button>
+      <button type="submit">Check weather</button>
     </form>
 
     <section id="selection-summary" hidden>
-      <h2>Izbrani podatki</h2>
+      <h2>Selected data</h2>
 
       <p>
-        <strong>Destinacija:</strong>
+        <strong>Destination:</strong>
         <span id="selected-destination"></span>
       </p>
 
       <p>
-        <strong>Datum:</strong>
+        <strong>Date:</strong>
         <span id="displayed-date"></span>
       </p>
     </section>
