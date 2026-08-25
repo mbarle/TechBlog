@@ -6,6 +6,11 @@ layout: default
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
   <title>Primerjava vremena na destinaciji</title>
 
   <style>
@@ -30,6 +35,7 @@ layout: default
           placeholder="E.g.: Himarë, Albania"
           required
         >
+      <div id="map" style="height: 400px; width: 100%;"></div>  
       </div>
 
       <div class="form-group">
@@ -62,6 +68,6 @@ layout: default
   </main>
 
   
-<script src="{{ '/assets/js/historic_weather.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/js/historic_weather.js' | relative_url }}"></script>
 </body>
 </html>
