@@ -60,15 +60,11 @@ import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 
     // Initializing map based on Ljublana's coordinates; L stands for Leaflet library
 
-    const map = L.map('map').setView([46.0569, 14.5058], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap'
-}).addTo(map);
+  
 
 
     // const URL = https://archive-api.open-meteo.com/v1/archive
-/*
+
     // 1. Inicializacija zemljevida na koordinatah Ljubljane
 const map = L.map('map').setView([46.0569, 14.5058], 13);
 
@@ -86,14 +82,17 @@ map.on('click', function(e) {
     // Tukaj sedaj pokličeš svoj API za zgodovino vremena
 });
 
-// 4. Iskanje preko polja (primer klica na Nominatim API med tipkanjem)
+/* 4. Iskanje preko polja (primer klica na Nominatim API med tipkanjem)
 async function isciKraj(vnos) {
-    const response = await fetch(`https://openstreetmap.org{vnos}`);
+
+    const response = await fetch(`https://openstreetmap.org${vnos}`);
     const podatki = await response.json();
     
     // Podatki vsebujejo polje objektov z 'lat' in 'lon' za vsak najden kraj
     return podatki;
 }
 
-  */  
+*/
+
+  
     
