@@ -1,0 +1,4 @@
+---
+layout: bpmn
+permalink: /bpmn/
+---

@@ -1,0 +1,279 @@
+---
+layout: default
+title: BPMN 2.0
+permalink: /bpmn/
+---
+
+<style>
+.bpmn-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.bpmn-page h1 {
+  margin-bottom: 0.5rem;
+}
+
+/* CERTIFICATE */
+
+.bpmn-certificate {
+  margin-bottom: 3rem;
+}
+
+.bpmn-certificate-card {
+  display: grid;
+  grid-template-columns: minmax(200px, 320px) 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem;
+
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.bpmn-certificate-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+/* DIAGRAMS */
+
+.bpmn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.bpmn-card {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.bpmn-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 220px;
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  background: #f8f8f8;
+  border-bottom: 1px solid #eee;
+}
+
+.bpmn-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* TEXT */
+
+.bpmn-card-content {  
+  padding: 1.4rem;
+}
+
+.bpmn-card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.bpmn-certificate h2 {
+  margin-top: 0;
+}
+
+/* BUTTON */
+
+.bpmn-link {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+
+  border: 1px solid #333;
+  border-radius: 5px;
+
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.bpmn-link:hover {
+  background: #333;
+  color: #fff;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+  .bpmn-certificate-card {
+    grid-template-columns: 1fr;
+  }
+
+  .bpmn-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+
+<div class="bpmn-page">
+
+  <h1>BPMN 2.0</h1>
+
+
+  <!-- CERTIFICATE -->
+
+  <section class="bpmn-certificate">
+
+    <div class="bpmn-certificate-card">
+
+      <a
+        class="bpmn-certificate-preview"
+        href="{{ '/assets/BPMN/BPMN-certificate.pdf' | relative_url }}"
+        target="_blank"
+        rel="noopener">
+
+        <img
+          src="{{ '/assets/BPMN/BPMN-certificate.png' | relative_url }}"
+          alt="BPMN 2.0 certificate">
+
+      </a>
+
+      <div>
+
+        <h2>BPMN 2.0 Certificate</h2>
+
+        <a
+          class="bpmn-link"
+          href="{{ '/assets/BPMN/BPMN-certificate.pdf' | relative_url }}"
+          target="_blank"
+          rel="noopener">
+          View certificate
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DIAGRAMS -->
+
+  <div class="bpmn-grid">
+
+
+    <!-- DIAGRAM 1 -->
+
+    <article class="bpmn-card">
+
+      <a
+        class="bpmn-preview"
+        href="{{ '/assets/BPMN/BPMN-example-1.pdf' | relative_url }}"
+        target="_blank"
+        rel="noopener">
+
+        <img
+          src="{{ '/assets/BPMN/first-diagram.svg' | relative_url }}"
+          alt="BPMN process diagram example 1">
+
+      </a>
+
+      <div class="bpmn-card-content">
+
+        <h3>BPMN Process Model 1</h3>
+
+        <a
+          class="bpmn-link"
+          href="{{ '/assets/BPMN/BPMN-example-1.pdf' | relative_url }}"
+          target="_blank"
+          rel="noopener">
+          View full diagram
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- DIAGRAM 2 -->
+
+    <article class="bpmn-card">
+
+      <a
+        class="bpmn-preview"
+        href="{{ '/assets/BPMN/bpmn-example-2.pdf' | relative_url }}"
+        target="_blank"
+        rel="noopener">
+
+        <img
+          src="{{ '/assets/BPMN/second-diagram.svg' | relative_url }}"
+          alt="BPMN process diagram example 2">
+
+      </a>
+
+      <div class="bpmn-card-content">
+
+        <h3>BPMN Process Model 2</h3>
+
+        <a
+          class="bpmn-link"
+          href="{{ '/assets/BPMN/bpmn-example-2.pdf' | relative_url }}"
+          target="_blank"
+          rel="noopener">
+          View full diagram
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- DIAGRAM 3 -->
+
+    <article class="bpmn-card">
+
+      <a
+        class="bpmn-preview"
+        href="{{ '/assets/BPMN/BPMN-example-3.pdf' | relative_url }}"
+        target="_blank"
+        rel="noopener">
+
+        <img
+          src="{{ '/assets/BPMN/third-diagram.svg' | relative_url }}"
+          alt="BPMN process diagram example 3">
+
+      </a>
+
+      <div class="bpmn-card-content">
+
+        <h3>BPMN Process Model 3</h3>
+
+        <a
+          class="bpmn-link"
+          href="{{ '/assets/BPMN/BPMN-example-3.pdf' | relative_url }}"
+          target="_blank"
+          rel="noopener">
+          View full diagram
+        </a>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</div>
