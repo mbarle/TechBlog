@@ -4,7 +4,8 @@ title: About
 permalink: /about/
 ---
 
-During my JavaScript course, several years back, I made the following apps to practice design patterns:
+During my SmartNinja and JavaScript courses, several years back, I made the following apps to practice design patterns:
+- [Email app in Python](https://bmail-4bla.onrender.com/) - up to 1 min wait :)
 - [Text analyzer](https://marusa15.github.io/text-analyzer/)
 - [Shopping list](https://marusa15.github.io/shopping-list-JS/)
 - [Quiz app](https://marusa15.github.io/QuizApp/)
