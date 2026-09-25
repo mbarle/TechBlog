@@ -59,17 +59,34 @@ layout: default
     
 
     <section id="selection-summary" hidden>
-      <h2>Selected data</h2>
+        <h2>Historical weather data</h2>
 
-      <p>
-        <strong>Destination:</strong>
-        <span id="selected-destination"></span>
-      </p>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <span class="summary-label">Destination:</span>
+            <span id="selected-destination" class="summary-value"></span>
+          </div>
 
-      <p>
-        <strong>Date:</strong>
-        <span id="displayed-date"></span>
-      </p>
+          <div class="summary-item">
+            <span class="summary-label">Date:</span>
+            <span id="displayed-date" class="summary-value"></span>
+          </div>
+
+          <div class="summary-item weather-main">
+            <span class="summary-label">Weather:</span>
+            <span id="hist_weather_code" class="weather-icon"></span>
+          </div>
+
+          <div class="summary-item">
+            <span class="summary-label">Maximum temperature:</span>
+            <span id="max_temperature" class="summary-value"></span>
+          </div>
+
+          <div class="summary-item">
+            <span class="summary-label">Minimum temperature:</span>
+            <span id="min_temperature" class="summary-value"></span>
+          </div>
+        </div>
     </section>
   </main>
 
