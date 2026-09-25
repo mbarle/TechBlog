@@ -1,4 +1,4 @@
-console.log("weather.js se je naložil");
+
 
 const weatherIcons = {
   0: "☀️",
@@ -13,14 +13,14 @@ const weatherIcons = {
 
 
 async function loadWeather(latitude,longitude) {
-   console.log("Prejel sem:", latitude, longitude);
+   
   const url =
   "https://api.open-meteo.com/v1/forecast" +
   `?latitude=${latitude}` +
   `&longitude=${longitude}` +
   "&current=temperature_2m,weather_code";
 
-  console.log("URL za vreme:", url);
+  
 
   try {
     const response = await fetch(url);
