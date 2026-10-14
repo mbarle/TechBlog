@@ -1,7 +1,3 @@
-console.log("geolocation.js se je naložil");
-
-
-
 function getWeather() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(success, error);
@@ -16,8 +12,7 @@ function success(position) {
 
 
 
-	console.log("Pridobljena širina:", latitude);
-    console.log("Pridobljena dolžina:", longitude);
+
 
 	loadWeather(latitude, longitude);
 	getLocationName(latitude, longitude);
@@ -30,7 +25,7 @@ async function getLocationName(latitude, longitude) {
 
     const data = await response.json();
 
-    console.log("Reverse geocoding:", data);
+   
 
     const place =
         data.address.city ||
