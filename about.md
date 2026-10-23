@@ -13,10 +13,11 @@ During my SmartNinja and JavaScript courses, several years back, I made the foll
 
 This [circular slider](https://marusa15.github.io/CircularSlider/) was a take-home assignment for a job application.
 
-
 As of June 2026, I am building this very website in Jekyll and will proceed with learning about APIs.
 
 In September 2026, I completed a [BPMN course]({{ '/bpmn/' | relative_url }}).
+
+In October 2026, I am building a [historical weather app]({{ '/historic-weather/' | relative_url }}) for displaying old weather data.
 
 
 <img src="https://ghchart.rshah.org/mbarle" alt="GitHub contribution chart" />
