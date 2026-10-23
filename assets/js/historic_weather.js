@@ -1,3 +1,59 @@
+/*
+PREGLED VSEBINE DATOTEKE
+
+1. Form input
+   Pridobivanje obrazca ter vnosnih polj za destinacijo in datum.
+
+2. Odpiranje koledarja
+   Klik kjerkoli v datumskem polju odpre koledar,
+   če brskalnik podpira showPicker().
+
+3. Form output
+   Pridobivanje elementov za prikaz izbrane destinacije in datuma.
+
+4. Datumske omejitve
+   Določitev današnjega datuma in datuma pred 20 leti.
+   Funkcija formatDateForInput() pripravi lokalni datum
+   v obliki YYYY-MM-DD, ki jo zahteva HTML-polje type="date".
+   Izbira datuma je omejena na zadnjih 20 let do danes.
+
+5. Oddaja obrazca – event listener
+   Preprečitev privzetega pošiljanja obrazca.
+   Preverjanje, ali sta destinacija in datum izpolnjena.
+   Prikaz izbire ter klic funkcije transformDestination().
+
+6. Pretvorba destinacije v zemljepisne koordinate
+   Funkcija transformDestination() pridobi latitude in longitude
+   prek Open-Meteo Geocoding API ter pokliče loadWeather().
+   https://geocoding-api.open-meteo.com/v1/search
+
+7. Pridobivanje in prikaz zgodovinskega vremena
+   Objekt weatherIcons povezuje izbrane vremenske kode z ikonami.
+   Funkcija loadWeather() pridobi vremensko kodo ter najvišjo
+   in najnižjo temperaturo za izbrane koordinate in datum.
+   Ob napaki prikaže »Podatek ni na voljo«.
+   https://archive-api.open-meteo.com/v1/archive
+
+8. Inicializacija zemljevida
+   Leaflet (L) ustvari zemljevid s središčem v Ljubljani.
+
+9. Podlaga zemljevida
+   Dodajanje podlage OpenStreetMap.
+
+10. Klik na zemljevid
+    Pridobivanje in izpis koordinat izbrane točke.
+    Klic API-ja za vreme na tem mestu še ni dodan.
+
+11. Iskanje krajev – zakomentiran osnutek
+    Na koncu je neaktiven osnutek funkcije isciKraj()
+    za iskanje krajev prek Nominatim API.
+    URL v osnutku še ni ustrezen za takšno iskanje.
+
+REFERENČNI PRIMER URL-JA ZA VREME
+https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&start_date=2026-09-08&end_date=2026-09-22&daily=weather_code,temperature_2m_max,temperature_2m_min
+*/
+
+
 import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 
 
@@ -6,7 +62,7 @@ import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
     const destinationInput = document.getElementById("destination");
     const dateInput = document.getElementById("selected-date");
 
-// omogoči, da se date picker odpre kjerkoli v okvirčku 
+// Omogoči, da pod Select a date kliknes kjerkoli za prikaz koledarja 
 
    dateInput.addEventListener("click", () => {
     if (dateInput.showPicker) {
@@ -62,17 +118,11 @@ import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 
       transformDestination(destination, selectedDate); 
       
-      
-      console.log("Date:" + selectedDate);
-      console.log("Destination:" + destination)
     });
 
-    // transform destination to latitude, longtude
-    // https://geocoding-api.open-meteo.com/v1/search
+    // transform destination to latitude, longtude with https://geocoding-api.open-meteo.com/v1/search
 
-
-async function transformDestination(destination, selectedDate) {
-    console.log("transformDestination f loaded")  
+    async function transformDestination(destination, selectedDate) { 
 
     if (!destination) {
     console.log("No destination yet");
@@ -85,11 +135,6 @@ async function transformDestination(destination, selectedDate) {
     "https://geocoding-api.open-meteo.com/v1/search" +
     `?name=${encodeURIComponent(destination)}&count=1&language=en&format=json`;
 
-    console.log("Geocoding URL:", url);
-
-    
-
-
 
     try {
       const response = await fetch(url);
@@ -100,8 +145,6 @@ async function transformDestination(destination, selectedDate) {
 
     const data = await response.json();
 
-    console.log("Geocoding response:", data);
-
     if (!data.results || data.results.length === 0) {
     throw new Error("Lokacije ni bilo mogoče najti.");
     }
@@ -110,16 +153,12 @@ async function transformDestination(destination, selectedDate) {
 
     const longitude = data.results[0].longitude;
 
-    console.log("Latitude:", latitude);
-    console.log("Longitude:", longitude);
-
     loadWeather(latitude, longitude, selectedDate);
+
   } catch (error) {
     console.error("Napaka pri pretvorbi lokacije:", error);
   } 
 }
-
-
 
     // Fetch data for selected destination and date
 
@@ -134,7 +173,6 @@ const weatherIcons = {
 };
 
 async function loadWeather(latitude,longitude, selectedDate) {
-   console.log("Prejel sem:" + latitude, longitude, selectedDate);
   const url =
   "https://archive-api.open-meteo.com/v1/archive" +
   `?latitude=${latitude}` +
@@ -144,8 +182,6 @@ async function loadWeather(latitude,longitude, selectedDate) {
   `&timezone=auto` +
   `&daily=weather_code,temperature_2m_max,temperature_2m_min`;
 
-  console.log("URL za vreme:", url);
-
   try {
     const response = await fetch(url);
 
@@ -154,11 +190,6 @@ async function loadWeather(latitude,longitude, selectedDate) {
     }
 
     const data = await response.json();
-
-    console.log("Response:", data);
-
-    console.log("Weather code:", data.daily.weather_code[0]);
-    console.log("Icon:", weatherIcons[data.daily.weather_code[0]]);
 
     document.getElementById("hist_weather_code").textContent =
       `${weatherIcons[data.daily.weather_code[0]]} `;
@@ -171,7 +202,6 @@ async function loadWeather(latitude,longitude, selectedDate) {
 
    
   } catch (error) {
-    console.error("Napaka pri pridobivanju vremena:", error);
     document.getElementById("max_temperature").textContent =
       "Podatek ni na voljo";
     document.getElementById("min_temperature").textContent =
@@ -182,31 +212,11 @@ async function loadWeather(latitude,longitude, selectedDate) {
   
 }
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
     // Initializing map based on Ljublana's coordinates; L stands for Leaflet library
-
-  
-
-
     // const URL = https://archive-api.open-meteo.com/v1/archive
     // const open-meteoURL = https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&start_date=2026-09-08&end_date=2026-09-22&daily=weather_code,temperature_2m_max,temperature_2m_min
 
-    // 1. Inicializacija zemljevida na koordinatah Ljubljane
+// 1. Inicializacija zemljevida na koordinatah Ljubljane
 const map = L.map('map').setView([46.0569, 14.5058], 13);
 
 // 2. Dodajanje brezplačne podlage (OpenStreetMap)
