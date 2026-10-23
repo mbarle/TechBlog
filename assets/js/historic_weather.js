@@ -56,6 +56,12 @@ https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&sta
 
 import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 
+const map = L.map('map').setView([46.0569, 14.5058], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap'
+}).addTo(map);
+
 
 // Form input
     const form = document.getElementById("destination-form");
@@ -125,15 +131,12 @@ import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
     async function transformDestination(destination, selectedDate) { 
 
     if (!destination) {
-    console.log("No destination yet");
     return;
     }
 
-    console.log("Destination:" + destination);
-    console.log("transformDestination function loaded");
     const url =
     "https://geocoding-api.open-meteo.com/v1/search" +
-    `?name=${encodeURIComponent(destination)}&count=1&language=en&format=json`;
+    `?name=${encodeURIComponent(destination)}&count=5&language=en&format=json`;
 
 
     try {
@@ -152,6 +155,8 @@ import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
     const latitude = data.results[0].latitude;
 
     const longitude = data.results[0].longitude;
+
+    map.setView([latitude, longitude], 13);
 
     loadWeather(latitude, longitude, selectedDate);
 
@@ -217,15 +222,11 @@ async function loadWeather(latitude,longitude, selectedDate) {
     // const open-meteoURL = https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&start_date=2026-09-08&end_date=2026-09-22&daily=weather_code,temperature_2m_max,temperature_2m_min
 
 // 1. Inicializacija zemljevida na koordinatah Ljubljane
-const map = L.map('map').setView([46.0569, 14.5058], 13);
+// const map = L.map('map').setView([latitude, longitude], 13);
 
-// 2. Dodajanje brezplačne podlage (OpenStreetMap)
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap'
-}).addTo(map);
 
 // 3. Kako rešiti problem manjkajočih krajev? Klik kamor koli na zemljevidu!
-map.on('click', function(e) {
+/* map.on('click', function(e) {
     const lat = e.latlng.lat;
     const lng = e.latlng.lng;
     
@@ -233,7 +234,7 @@ map.on('click', function(e) {
     // Tukaj sedaj pokličeš svoj API za zgodovino vremena
 });
 
-/* 4. Iskanje preko polja (primer klica na Nominatim API med tipkanjem)
+ 4. Iskanje preko polja (primer klica na Nominatim API med tipkanjem)
 async function isciKraj(vnos) {
 
     const response = await fetch(`https://openstreetmap.org${vnos}`);
